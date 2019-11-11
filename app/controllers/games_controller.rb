@@ -14,9 +14,24 @@ class GamesController < ApplicationController
     @word = params[:word].upcase.split("")
     @grid = params[:grid].upcase.split("")
     @response = valid?(@word, @grid)
+    if @response == "valid"
+      @score = @word.length
+    else
+      @score = 0
+    end
+    @total = session_score(@score)
   end
 
   private
+
+  def session_score(new_score)
+    if session[:score].nil?
+      session[:score] = 0
+    else
+      session[:score] += new_score
+    end
+  session[:score]
+  end
 
   def generate_hash(letter_array)
     letters = {}

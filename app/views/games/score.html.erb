@@ -1,10 +1,11 @@
 <h1>Result </h1>
-<p>
+<p class="response">
   <% if @response == "valid" %>
-    <%= "Congratulations! #{@word.join} is a valid English word!" %>
+    <%= "Congratulations! #{@word.join} is a valid English word! Your score is #{@score}" %>
   <% else %>
-    <%= "Sorry! #{@word.join} #{@response} :("%>
+    <%= "Sorry! #{@word.join} #{@response} :( Your score is #{@score}"%>
   <% end %>
 </p>
+<p> Your total score is <%= @total %> </p>
 
 <%= link_to 'Play again!', new_path %>
